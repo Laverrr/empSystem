@@ -10,10 +10,6 @@ public class EmployeeExample {
 
     protected List<Criteria> oredCriteria;
 
-    private Integer limit;
-
-    private Long offset;
-
     public EmployeeExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
@@ -65,22 +61,6 @@ public class EmployeeExample {
         oredCriteria.clear();
         orderByClause = null;
         distinct = false;
-    }
-
-    public void setLimit(Integer limit) {
-        this.limit = limit;
-    }
-
-    public Integer getLimit() {
-        return limit;
-    }
-
-    public void setOffset(Long offset) {
-        this.offset = offset;
-    }
-
-    public Long getOffset() {
-        return offset;
     }
 
     protected abstract static class GeneratedCriteria {
@@ -395,72 +375,72 @@ public class EmployeeExample {
         }
 
         public Criteria andLevelIsNull() {
-            addCriterion("`LEVEL` is null");
+            addCriterion("LEVEL is null");
             return (Criteria) this;
         }
 
         public Criteria andLevelIsNotNull() {
-            addCriterion("`LEVEL` is not null");
+            addCriterion("LEVEL is not null");
             return (Criteria) this;
         }
 
         public Criteria andLevelEqualTo(String value) {
-            addCriterion("`LEVEL` =", value, "level");
+            addCriterion("LEVEL =", value, "level");
             return (Criteria) this;
         }
 
         public Criteria andLevelNotEqualTo(String value) {
-            addCriterion("`LEVEL` <>", value, "level");
+            addCriterion("LEVEL <>", value, "level");
             return (Criteria) this;
         }
 
         public Criteria andLevelGreaterThan(String value) {
-            addCriterion("`LEVEL` >", value, "level");
+            addCriterion("LEVEL >", value, "level");
             return (Criteria) this;
         }
 
         public Criteria andLevelGreaterThanOrEqualTo(String value) {
-            addCriterion("`LEVEL` >=", value, "level");
+            addCriterion("LEVEL >=", value, "level");
             return (Criteria) this;
         }
 
         public Criteria andLevelLessThan(String value) {
-            addCriterion("`LEVEL` <", value, "level");
+            addCriterion("LEVEL <", value, "level");
             return (Criteria) this;
         }
 
         public Criteria andLevelLessThanOrEqualTo(String value) {
-            addCriterion("`LEVEL` <=", value, "level");
+            addCriterion("LEVEL <=", value, "level");
             return (Criteria) this;
         }
 
         public Criteria andLevelLike(String value) {
-            addCriterion("`LEVEL` like", value, "level");
+            addCriterion("LEVEL like", value, "level");
             return (Criteria) this;
         }
 
         public Criteria andLevelNotLike(String value) {
-            addCriterion("`LEVEL` not like", value, "level");
+            addCriterion("LEVEL not like", value, "level");
             return (Criteria) this;
         }
 
         public Criteria andLevelIn(List<String> values) {
-            addCriterion("`LEVEL` in", values, "level");
+            addCriterion("LEVEL in", values, "level");
             return (Criteria) this;
         }
 
         public Criteria andLevelNotIn(List<String> values) {
-            addCriterion("`LEVEL` not in", values, "level");
+            addCriterion("LEVEL not in", values, "level");
             return (Criteria) this;
         }
 
         public Criteria andLevelBetween(String value1, String value2) {
-            addCriterion("`LEVEL` between", value1, value2, "level");
+            addCriterion("LEVEL between", value1, value2, "level");
             return (Criteria) this;
         }
 
         public Criteria andLevelNotBetween(String value1, String value2) {
-            addCriterion("`LEVEL` not between", value1, value2, "level");
+            addCriterion("LEVEL not between", value1, value2, "level");
             return (Criteria) this;
         }
 
@@ -605,8 +585,6 @@ public class EmployeeExample {
         }
     }
 
-    /**
-     */
     public static class Criteria extends GeneratedCriteria {
 
         protected Criteria() {

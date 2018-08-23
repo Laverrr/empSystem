@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
@@ -45,26 +45,26 @@ For search criteria:
 			</th>
 		</tr>
 <c:forEach
-	var="employee" items="${employeeList}">
+	var="employee" items="${employees}">
 	
 	
 		<tr>
 
 			<td>
-				<a href="javascript: submitEmployeeID(this.resultsForm, ${employee.ID})"> 
-					<c:out value="${employee.firstName}" /> 
+				<a href="javascript: submitEmployeeID(this.resultsForm,${employee.id})">
+					<c:out value="${employee.firstName}" />
 					<c:out value="${employee.middleInitial}" /> .
-					<c:out value="${employee.lastName}" /> 
+					<c:out value="${employee.lastName}" />
 				</a>
 			</td>
 			<td>	
-				<c:out value="${employee.enterpriseID}" /> 	
+				<c:out value="${employee.enterpriseId}" />
 			</td>
 			<td>	
-				<c:out value="${employee.level}" /> 	
+				<c:out value="${employee.level}" />
 			</td>
 			<td>	
-				<c:out value="${employee.workForce}" /> 	
+				<c:out value="${employee.workforce}" />
 			</td>
 
 		</tr>

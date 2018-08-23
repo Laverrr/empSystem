@@ -34,7 +34,7 @@
 	
 	<!-- 自动扫描mybatis定义的mapper类  ，spring扫描到这些mapper类之后，就会向spring容器注册这些mapper类对象-->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage"  value="dao"/>
+		<property name="basePackage"  value="mapper"/>
 	</bean>
 	
 </beans>

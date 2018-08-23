@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
@@ -21,7 +21,7 @@ Enter the first name and last name of the employee you wish to find and the appl
 a list of employees with names that contain the search parameters you entered<br>
 <hr>
 
-<form name="searchForm" action="/empdb/find/findEmployees.htm" method="POST">
+<form name="searchForm" action="/result/search.do" method="POST">
 <table>	
 	<tr><td>First Name</td><td colspan=2><input name="firstName"/></td></tr>
 	<tr><td>Last Name</td><td><input name="lastName"/></td>
