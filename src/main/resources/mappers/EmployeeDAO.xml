@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.EmployeeDAO">
+  <resultMap id="BaseResultMap" type="pojo.Employee">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="FIRST_NAME" jdbcType="VARCHAR" property="firstName" />
+    <result column="LAST_NAME" jdbcType="VARCHAR" property="lastName" />
+    <result column="MIDDLE_INITIAL" jdbcType="VARCHAR" property="middleInitial" />
+    <result column="LEVEL" jdbcType="VARCHAR" property="level" />
+    <result column="WORKFORCE" jdbcType="VARCHAR" property="workforce" />
+    <result column="ENTERPRISE_ID" jdbcType="VARCHAR" property="enterpriseId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, FIRST_NAME, LAST_NAME, MIDDLE_INITIAL, `LEVEL`, WORKFORCE, ENTERPRISE_ID
+  </sql>
+  <select id="selectByExample" parameterType="pojo.EmployeeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from employee
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from employee
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from employee
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pojo.EmployeeExample">
+    delete from employee
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pojo.Employee">
+    insert into employee (ID, FIRST_NAME, LAST_NAME, 
+      MIDDLE_INITIAL, `LEVEL`, WORKFORCE, 
+      ENTERPRISE_ID)
+    values (#{id,jdbcType=INTEGER}, #{firstName,jdbcType=VARCHAR}, #{lastName,jdbcType=VARCHAR}, 
+      #{middleInitial,jdbcType=VARCHAR}, #{level,jdbcType=VARCHAR}, #{workforce,jdbcType=VARCHAR}, 
+      #{enterpriseId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.Employee">
+    insert into employee
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="firstName != null">
+        FIRST_NAME,
+      </if>
+      <if test="lastName != null">
+        LAST_NAME,
+      </if>
+      <if test="middleInitial != null">
+        MIDDLE_INITIAL,
+      </if>
+      <if test="level != null">
+        `LEVEL`,
+      </if>
+      <if test="workforce != null">
+        WORKFORCE,
+      </if>
+      <if test="enterpriseId != null">
+        ENTERPRISE_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="firstName != null">
+        #{firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastName != null">
+        #{lastName,jdbcType=VARCHAR},
+      </if>
+      <if test="middleInitial != null">
+        #{middleInitial,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="workforce != null">
+        #{workforce,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseId != null">
+        #{enterpriseId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pojo.EmployeeExample" resultType="java.lang.Long">
+    select count(*) from employee
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update employee
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.firstName != null">
+        FIRST_NAME = #{record.firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastName != null">
+        LAST_NAME = #{record.lastName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.middleInitial != null">
+        MIDDLE_INITIAL = #{record.middleInitial,jdbcType=VARCHAR},
+      </if>
+      <if test="record.level != null">
+        `LEVEL` = #{record.level,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workforce != null">
+        WORKFORCE = #{record.workforce,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enterpriseId != null">
+        ENTERPRISE_ID = #{record.enterpriseId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update employee
+    set ID = #{record.id,jdbcType=INTEGER},
+      FIRST_NAME = #{record.firstName,jdbcType=VARCHAR},
+      LAST_NAME = #{record.lastName,jdbcType=VARCHAR},
+      MIDDLE_INITIAL = #{record.middleInitial,jdbcType=VARCHAR},
+      `LEVEL` = #{record.level,jdbcType=VARCHAR},
+      WORKFORCE = #{record.workforce,jdbcType=VARCHAR},
+      ENTERPRISE_ID = #{record.enterpriseId,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.Employee">
+    update employee
+    <set>
+      <if test="firstName != null">
+        FIRST_NAME = #{firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastName != null">
+        LAST_NAME = #{lastName,jdbcType=VARCHAR},
+      </if>
+      <if test="middleInitial != null">
+        MIDDLE_INITIAL = #{middleInitial,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        `LEVEL` = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="workforce != null">
+        WORKFORCE = #{workforce,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseId != null">
+        ENTERPRISE_ID = #{enterpriseId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.Employee">
+    update employee
+    set FIRST_NAME = #{firstName,jdbcType=VARCHAR},
+      LAST_NAME = #{lastName,jdbcType=VARCHAR},
+      MIDDLE_INITIAL = #{middleInitial,jdbcType=VARCHAR},
+      `LEVEL` = #{level,jdbcType=VARCHAR},
+      WORKFORCE = #{workforce,jdbcType=VARCHAR},
+      ENTERPRISE_ID = #{enterpriseId,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
