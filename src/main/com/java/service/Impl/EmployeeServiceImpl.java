@@ -5,11 +5,10 @@ import mapper.EmployeeProjectMapMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pojo.Employee;
-import pojo.EmployeeExample;
-import pojo.EmployeeProjectMap;
-import pojo.EmployeeProjectMapExample;
+import pojo.*;
 import service.IEmployeeService;
+import vo.EmployeeDetail;
+import vo.EmployeeProjectDetail;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -49,4 +48,11 @@ public class EmployeeServiceImpl implements IEmployeeService {
         }
         return employeeHashSet;
     }
+
+    public Employee selectById(int id) {
+        Employee employee = employeeMapper.selectByPrimaryKey(id);
+        return employee;
+    }
+
+
 }

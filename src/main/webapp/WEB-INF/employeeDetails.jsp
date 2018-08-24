@@ -18,14 +18,14 @@
 	<tr>
 		<td>
 			<c:out value="${employee.firstName}" /> 
-			<c:out value="${employee.middleInitial}" />. 
+			<c:out value="${employee.middleInitial}" />.
 			<c:out value="${employee.lastName}" />
-			(<c:out value="${employee.enterpriseID}" />)
+			(<c:out value="${employee.enterpriseId}" />)
 		</td>
 	</tr>
 	<tr>
 		<td>
-			<c:out value="${employee.level}" />, <c:out value="${employee.workForce}" />
+			<c:out value="${employee.level}" />, <c:out value="${employee.workforce}" />
 		</td>
 	</tr>
 </table>

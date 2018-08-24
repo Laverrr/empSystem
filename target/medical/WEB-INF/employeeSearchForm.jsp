@@ -21,18 +21,21 @@ Enter the first name and last name of the employee you wish to find and the appl
 a list of employees with names that contain the search parameters you entered<br>
 <hr>
 
-<form name="searchForm" action="/result/search.do" method="POST">
+<form name="searchForm" action="/result/searchByName.do" method="POST">
 <table>	
 	<tr><td>First Name</td><td colspan=2><input name="firstName"/></td></tr>
 	<tr><td>Last Name</td><td><input name="lastName"/></td>
 	<td><input type="submit" name="searchType" value="Find By Name" onClick="this.value='findByName'"></td></tr>
-	<tr><td colspan=2>OR</td></tr>	
-
+	<tr><td colspan=2>OR</td></tr>
+</table>
+</form>
+<form name="searchForm" action="/result/searchByProjectName.do" method="POST">
+	<table>
 	<tr><td>Project Name</td>
 		<td>
-			<select name="projectID">
-	           <c:forEach var="project" items="${projectList}">
-					<option value="${project.ID}">${project.name}</option>
+			<select name="ProjectId">
+	           <c:forEach var="project" items="${projectsList}">
+					<option value="${project.id}">${project.name}</option>
 	           </c:forEach>
 	        </select>
 		</td>	

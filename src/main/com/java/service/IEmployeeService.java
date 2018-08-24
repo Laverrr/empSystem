@@ -9,4 +9,6 @@ public interface IEmployeeService {
     List<Employee> searchByName(Employee employee);
 
     Set<Employee> searchByProjectId(String projectId);
+
+    Employee selectById(int id);
 }

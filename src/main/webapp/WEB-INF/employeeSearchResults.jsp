@@ -51,7 +51,7 @@ For search criteria:
 		<tr>
 
 			<td>
-				<a href="javascript: submitEmployeeID(this.resultsForm,${employee.id})">
+				<a href="/detail/detail.do?id=${employee.id}">
 					<c:out value="${employee.firstName}" />
 					<c:out value="${employee.middleInitial}" /> .
 					<c:out value="${employee.lastName}" />

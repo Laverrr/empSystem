@@ -19,4 +19,8 @@ public class ProjectServiceImpl implements IProjectService {
     public List<Projects> list() {
         return projectsMapper.selectByExample(new ProjectsExample());
     }
+
+    public Projects selectById(int id) {
+        return projectsMapper.selectByPrimaryKey(id);
+    }
 }

@@ -10,5 +10,8 @@
         <module name="tomcatSpring" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="medical" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
